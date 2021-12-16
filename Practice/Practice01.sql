@@ -1,4 +1,4 @@
--- 문제 1. 정렬: 입사일의 올림차순
+-- 문제 1. 정렬: 입사일의 오름차순
 -- 이름(first, last), 월급, 전화번호, 입사일 출력, 칼럼명 대체
 select  first_name || ' ' || last_name as "이름",
         salary as "월급",
@@ -63,16 +63,16 @@ select  department_name "부서이름"
 from departments
 order by length(department_name) desc;
 
--- 문제 9. 정렬: 나라이름 짧은 순서대로
+-- 문제 9. 정렬: 나라이름 오름차순
 -- 지사가 있을 것으로 예상되는 나라들의 나라이름을 대문자로 출력
 select  upper(country_name) "나라이름"
 from countries
 where country_id is not null
-order by length(country_name) asc;
+order by country_name asc;
 
 -- 문제 10. 입사일이 03/12/31 이전인 직원의 이름, 월급, 전화번호, 입사일 출력
 -- 전화번호는 543-543-3433과 같은 형태로
-select  first_name "이름",
+select  first_name || ' ' || last_name "이름",
         salary "월급",
         replace(phone_number,'.','-') "전화번호",
         hire_date "입사일"
