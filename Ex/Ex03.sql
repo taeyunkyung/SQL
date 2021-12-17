@@ -55,8 +55,37 @@ from employees
 group by department_id
 order by department_id asc;
 
+-- GROUP BY절 (이어서)
+select round(avg(salary),1)
+from employees
+group by department_id;
+
+select	department_id,
+        round(avg(salary),1)
+from employees
+group by department_id
+order by department_id asc;
+
 select  department_id,
         count(*),
         sum(salary)
 from employees
-group by department_id;
+group by department_id
+order by department_id asc;
+
+select  department_id,
+        job_id,
+        count(*),
+        round(avg(salary),1)
+from employees
+group by department_id, job_id
+order by department_id asc, job_id desc;
+
+-- HAVING절: WHERE절에는 그룹함수를 쓸 수 없음
+select  department_id,
+        count(*),
+        sum(salary)
+from employees
+group by department_id
+having sum(salary) >= 20000
+or department_id = 40;
