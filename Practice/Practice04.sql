@@ -129,4 +129,44 @@ select avg(salary)
 from employees
 group by department_id;
 
--- 문제 8.
+-- 문제 8. 입사일이 빠른 순으로 11~15번째인 직원의 사번, 이름, 급여, 입사일
+-- 입사일이 빠른 순으로 출력
+select  rno,
+        employee_id,
+        first_name,
+        salary,
+        hire_date
+from (select  rownum rno,
+              employee_id,
+              first_name,
+              salary,
+              hire_date
+      from (select  employee_id,
+                    first_name,
+                    salary,
+                    hire_date
+            from employees
+            order by hire_date asc)
+      )
+where rno >= 11
+and rno <= 15;
+
+/***********************************************************/ 
+select  employee_id,
+        first_name,
+        salary,
+        hire_date
+from employees
+order by hire_date asc;
+
+select  rownum rno,
+        employee_id,
+        first_name,
+        salary,
+        hire_date
+from (select  employee_id,
+              first_name,
+              salary,
+              hire_date
+      from employees
+      order by hire_date asc);
